@@ -22,15 +22,18 @@ def select_form(form):
 def index(request):
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
-	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.85 Chrome/45.0.2454.85 Safari/537.36')]
+	br.set_handle_equiv(True)
+	br.set_handle_gzip(True)
+	br.set_handle_redirect(True)
+	br.set_handle_referer(True)
+	br.set_handle_refresh(mechanize._http.HTTPRefreshProcessor(), max_time=1)
+	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
 	br.open('http://kiittnp.in/tnp/usr/index.php')
 	br.select_form(predicate=select_form)
 	br.form['user_name']='1305394@kiit.ac.in'
 	br.form['password']='iammakarov007'
 	content = br.submit().read()
-	# print br.response().geturl()
-
-	# r = urllib.urlopen('http://www.kiittnp.in')
+	
 	soup = BeautifulSoup(content)
 	posts = soup.find_all('fieldset')
 	to_send = {}
