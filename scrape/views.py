@@ -5,6 +5,9 @@ import urllib
 import mechanize
 from datetime import datetime
 
+def test2(request):
+	return HttpResponse('This is working')
+
 def test(request):
 	last_date = request.GET.get('lastDate','01 01 00')
 	if (int(last_date[:2]) > 31) or (int(last_date[3:5]) > 12):
