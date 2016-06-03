@@ -22,7 +22,7 @@ def select_form(form):
 def index(request):
 	br = mechanize.Browser()
 	br.set_handle_robots(False)
-	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008071615 Fedora/3.0.1-1.fc9 Firefox/3.0.1')]
+	br.addheaders = [('User-agent', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/45.0.2454.85 Chrome/45.0.2454.85 Safari/537.36')]
 	br.open('http://kiittnp.in/tnp/usr/index.php')
 	br.select_form(predicate=select_form)
 	br.form['user_name']='1305394@kiit.ac.in'
