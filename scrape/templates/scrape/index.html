@@ -1,0 +1,9 @@
+{% if to_send %}
+    <ul>
+    {% for k,v in to_send.items %}
+        <li><a href="{{v.1}}">{{ v.0 }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No posts are available.</p>
+{% endif %}
